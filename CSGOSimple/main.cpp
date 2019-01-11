@@ -45,13 +45,14 @@ DWORD WINAPI OnDllAttach(LPVOID base)
         // 
 
         //uninject button
-        InputSys::Get().RegisterHotkey(VK_SCROLL, [base]() 
+        InputSys::Get().RegisterHotkey(VK_DELETE, [base]() 
 		{
             g_Unload = true;
         });
 
         // Menu Toggle
-        InputSys::Get().RegisterHotkey(VK_PAUSE, [base]() {
+        InputSys::Get().RegisterHotkey(VK_INSERT, [base]()//i like pause break but i changed to INS
+		{
             Menu::Get().Toggle();
         });
 
