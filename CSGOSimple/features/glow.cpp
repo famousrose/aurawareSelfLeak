@@ -9,21 +9,7 @@ Glow::Glow()
 
 Glow::~Glow()
 {
-    // We cannot call shutdown here unfortunately.
-    // Reason is not very straightforward but anyways:
-    // - This destructor will be called when the dll unloads
-    //   but it cannot distinguish between manual unload 
-    //   (pressing the Unload button or calling FreeLibrary)
-    //   or unload due to game exit.
-    //   What that means is that this destructor will be called
-    //   when the game exits.
-    // - When the game is exiting, other dlls might already 
-    //   have been unloaded before us, so it is not safe to 
-    //   access intermodular variables or functions.
-    //   
-    //   Trying to call Shutdown here will crash CSGO when it is
-    //   exiting (because we try to access g_GlowObjManager).
-    //
+
 }
 
 void Glow::Shutdown()

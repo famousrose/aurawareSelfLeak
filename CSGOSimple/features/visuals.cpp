@@ -433,21 +433,6 @@ void Visuals::Player::RenderSnapline()
 			}
 		}
 	}
-//---------------------------------------------------------------------------------------------------------------------------------\\
-
-	/*
-	const wchar_t* bufxd = L"auraware";
-	static float rainbow;
-	//-----------------\\
-
-	rainbow += 0.0008f;
-	if (rainbow > 1.f)
-		rainbow = 0.f;
-
-	g_VGuiSurface->DrawSetTextColor(Color::FromHSB(rainbow, 1.f, 1.f));
-	g_VGuiSurface->DrawSetTextPos(2, 2);
-	g_VGuiSurface->DrawPrintText(bufxd, wcslen(bufxd));
-	*/
 
 void Visuals::Player::HeadEsp(C_BasePlayer* entity)
 {
@@ -541,7 +526,6 @@ void Visuals::Misc::EyePos(C_BasePlayer * ent)
 
 	filtervis.pSkip = ent;
 	filter.pSkip = ent;
-	//filter.ShouldHitEntity(ent, MASK_SHOT);
 	rayvis.Init(startvis, endvis);
 	ray.Init(start, end);
 	g_EngineTrace->TraceRay(rayvis, MASK_SHOT, &filtervis, &trvis);
@@ -611,23 +595,6 @@ void Visuals::Misc::SniperX(C_BasePlayer* entity)
 {
 	
 }
-
-/*
-void Visuals::Misc::RenderCrosshair()
-{
-	int w, h;
-
-	g_EngineClient->GetScreenSize(w, h);
-
-	g_VGuiSurface->DrawSetColor(g_Options.color_esp_crosshair);
-
-	int cx = w / 2;
-	int cy = h / 2;
-
-	g_VGuiSurface->DrawLine(cx - 25, cy, cx + 25, cy);
-	g_VGuiSurface->DrawLine(cx, cy - 25, cx, cy + 25);
-}
-*/
 //--------------------------------------------------------------------------------
 void Visuals::Misc::RenderWeapon(C_BaseCombatWeapon* ent)
 {
@@ -935,36 +902,7 @@ void Visuals::Misc::ThirdPerson() {
 		g_Input->m_fCameraInThirdPerson = false;
 	}
 }
-/*void Visuals::Misc::Recoilx(C_BaseEntity* loc, C_BasePlayer* ply)
-{
-	int width = 0;
-	int height = 0;
 
-	//IClientEntityList* ent;
-	//IVEngineClient* eng;
-	//C_LocalPlayer* ply;
-	g_EngineClient->GetScreenSize(width, height);
-	g_EntityList->GetClientEntity(g_EngineClient->GetLocalPlayer());
-	if (g_LocalPlayer && g_LocalPlayer->IsAlive());
-	{
-		Vector ViewAngles;
-		g_EngineClient->GetViewAngles();
-		ViewAngles = ply->GetEyePos();
-
-		Vector fowardVec;
-		AngleVectors(ViewAngles,&fowardVec);
-		fowardVec *= 10000;
-
-		Vector start = local->GetOrigin() + local->GetViewOffset();
-		Vector end = start + fowardVec, endScreen;
-
-		if (g_Render->WorldToScreen(end, endScreen) && local->IsAlive())
-		{
-			g_Render->Line(endScreen.x - 4, endScreen.y, endScreen.x + 4, endScreen.y, Color(int(g_Options.Colors.color_recoil[0] * 255.f), int(g_Options.Colors.color_recoil[1] * 255.f), int(g_Options.Colors.color_recoil[2] * 255.f)));
-			g_Render->Line(endScreen.x, endScreen.y - 4, endScreen.x, endScreen.y + 4, Color(int(g_Options.Colors.color_recoil[0] * 255.f), int(g_Options.Colors.color_recoil[1] * 255.f), int(g_Options.Colors.color_recoil[2] * 255.f)));
-		}
-	}
-} */
 void Visuals::DrawString(unsigned long font, int x, int y, Color color, unsigned long alignment, const char* msg, ...)
 {
 
